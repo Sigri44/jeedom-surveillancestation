@@ -69,7 +69,7 @@ class surveillancestation extends eqLogic {
 			self::$_sid = config::byKey('SYNO.SID.Session', 'surveillancestation');
 			return self::$_sid;
 		}
-		$url = self::getUrl() . '/webapi/' . self::getApi('SYNO.API.Auth', 'path') . '?api=SYNO.API.Auth&method=Login&version=' . self::getApi('SYNO.API.Auth', 'version') . '&account=' . urlencode(config::byKey('user', 'surveillancestation')) . '&passwd=' . urlencode(config::byKey('password', 'surveillancestation')) . '&session=SurveillanceStation&format=sid';
+		$url = self::getUrl() . '/webapi/' . self::getApi('SYNO.API.Auth', 'path') . '?api=SYNO.API.Auth&method=login&version=' . self::getApi('SYNO.API.Auth', 'version') . '&account=' . urlencode(config::byKey('user', 'surveillancestation')) . '&passwd=' . urlencode(config::byKey('password', 'surveillancestation')) . '&session=SurveillanceStation&format=sid';
 		$http = new com_http($url);
 		$data = json_decode($http->exec(15), true);
 		if ($data['success'] != true) {
